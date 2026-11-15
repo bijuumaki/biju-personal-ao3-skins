@@ -1,0 +1,104 @@
+/* AO3 dark WORK skin. Literal colors only, no variables.
+   Palette: ground #0A0E15 | surface #212631 | raised #373F4E | line #4E576A | control #667085
+   text #E4E8F0 | soft #A3ACBD | link #C9D1E0 | link hover #FFFFFF
+   No font overrides. Only the work title is bold. */
+
+#workskin {
+  background: #0A0E15;
+  color: #E4E8F0;
+  line-height: 1.7;
+}
+
+#workskin .preface,
+#workskin .preface.group,
+#workskin .chapter .preface,
+#workskin .afterword,
+#workskin .end.notes.module {
+  background: #212631;
+  color: #E4E8F0;
+  border-color: #4E576A;
+}
+
+#workskin .preface .title,
+#workskin h2.title.heading {
+  font-weight: bold;
+  color: #E4E8F0;
+}
+
+#workskin .byline,
+#workskin h3.byline.heading {
+  color: #A3ACBD;
+  background: transparent;
+}
+
+#workskin .heading,
+#workskin h1,
+#workskin h2,
+#workskin h3,
+#workskin h4,
+#workskin h5,
+#workskin h6 {
+  color: #E4E8F0;
+  background: transparent;
+}
+
+#workskin .summary,
+#workskin .notes,
+#workskin .summary.module,
+#workskin .notes.module,
+#workskin .preface .meta {
+  background: transparent;
+  color: #E4E8F0;
+  border-color: #4E576A;
+}
+
+#workskin .userstuff,
+#workskin .userstuff p,
+#workskin blockquote.userstuff,
+#workskin .chapter .userstuff {
+  background: transparent;
+  color: #E4E8F0;
+}
+
+#workskin #chapters .userstuff,
+#workskin #chapters.userstuff {
+  background: #0A0E15;
+  color: #E4E8F0;
+}
+
+#workskin a:link,
+#workskin a:visited {
+  color: #C9D1E0;
+}
+
+#workskin a:hover,
+#workskin a:focus {
+  color: #FFFFFF;
+}
+
+#workskin blockquote {
+  background: transparent;
+  color: #E4E8F0;
+  border-left: 1px solid #667085;
+  padding-left: 1em;
+}
+
+#workskin hr {
+  border: 0;
+  border-top: 1px solid #4E576A;
+}
+
+#workskin table,
+#workskin th,
+#workskin td {
+  background: #212631;
+  color: #E4E8F0;
+  border-color: #4E576A;
+}
+
+#workskin pre,
+#workskin code {
+  background: #0A0E15;
+  color: #E4E8F0;
+  border-color: #4E576A;
+}
