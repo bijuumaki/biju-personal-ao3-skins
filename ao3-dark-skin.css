@@ -1,375 +1,985 @@
-/* AO3 dark site skin. CSS only, parent skin: Default.
-   Palette (literals, no var(): the sanitizer's support is unreliable):
-   ground #0A0E15 | surface #212631 | raised #373F4E | line #4E576A | control #667085
-   text #E4E8F0 | soft #A3ACBD | placeholder link #B8C4DC | logo plate #EEF0F4 | AO3 red #990000
-   No font-family/size overrides anywhere. Only exception: work title bold. */
-
-/* ---------- Ground ---------- */
-html, body, #outer, #inner, #main, .wrapper, #header, #footer,
-.dashboard, #dashboard, .region, .module, .listbox .index,
-.splash, .welcome {
-  background-color: #0A0E15;
-  color: #E4E8F0;
-  background-image: none;
+:root {
+  --ground: #0A0E15;
+  --surface: #212631;
+  --raised: #373F4E;
+  --line: #4E576A;
+  --control: #667085;
+  --text: #E4E8F0;
+  --text-soft: #A3ACBD;
+  --accent: #C9D1E0;
+  --accent-hover: #FFFFFF;
 }
-body { background: #0A0E15; color: #E4E8F0; }
 
-/* ---------- Surfaces ---------- */
-fieldset, fieldset fieldset, .group, .listbox, .listbox .heading,
-.blurb, li.blurb, li.work.blurb, li.bookmark.blurb, li.series.blurb,
-li.user.blurb, li.pseud.blurb, li.collection.blurb, li.tag.blurb,
-dl.meta, dl.work.meta.group, .work .preface, .preface.group,
-.userstuff.summary, .summary blockquote, .notes, .notes blockquote,
-.filters, #work_filters, .filters dl, .filters fieldset,
-.comment, li.comment, .comment .userstuff, #comments_placeholder,
-.dashboard, #dashboard.dashboard, ul.navigation.actions,
-.ui-dialog, .ui-widget-content, .autocomplete, .ui-autocomplete,
-.flash, .notice, .caution, .error, .comment_error,
-table, th, td, thead, tbody, tfoot, caption, .index.group, .tagset {
-  background-color: #212631;
-  color: #E4E8F0;
-  border-color: #4E576A;
-  box-shadow: none;
+body {
+  background: var(--ground);
+  color: var(--text);
+  line-height: 1.5;
 }
-dl.meta dt, dl.meta dd, .blurb .header, .blurb .summary, .blurb .stats dt, .blurb .stats dd,
-.filters dt, .filters dd, .filters .heading {
+
+#outer,
+#outer.wrapper,
+#main,
+.wrapper {
+  background: var(--ground);
+  color: var(--text);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heading,
+.heading a {
+  color: var(--text);
+}
+
+h2.heading,
+h3.heading {
+  margin-top: 1.5em;
+}
+
+a:link,
+a:visited,
+.heading a,
+.tags a {
+  color: var(--accent);
+}
+
+a:hover,
+a:focus,
+.heading a:hover,
+.tags a:hover {
+  color: var(--accent-hover);
+}
+
+a:focus {
+  outline: 2px solid var(--accent);
+}
+
+#header,
+#header.region {
+  background: var(--ground);
+  color: var(--text);
+}
+
+#header .primary a,
+#header .primary .dropdown > a,
+#header .actions a {
+  color: var(--text);
+}
+
+#header .primary a:hover,
+#header .primary a:focus,
+#header .actions a:hover,
+#header .actions a:focus {
   background: transparent;
-  color: #E4E8F0;
+  color: var(--accent-hover);
 }
-li.blurb.group, li.work.blurb.group { border-color: #4E576A; }
-.heading, h1, h2, h3, h4, h5, h6, legend, label, dt, dd, p, li, span.symbol { color: #E4E8F0; }
-.footnote, .datetime, .landmark, .required, .hint, .caution, .help, .symbol .question,
-.heading .datetime, .byline, .meta .tags .heading { color: #A3ACBD; }
 
-/* Raised elements */
-.dropdown .menu, .menu, ul.menu, .actions .menu, .expandable.secondary,
-.secondary, ul.secondary, #header .menu, .ui-menu, .ui-tabs-nav,
-li.current, .current, .selected, .pagination .current,
-thead th, th, .index .heading, .dashboard .navigation li, legend {
-  background-color: #373F4E;
-  color: #E4E8F0;
-  border-color: #4E576A;
+/* Header nav: plain text only. Beats the generic .actions a button rule below. */
+#header .primary,
+#header .primary > li,
+#header .actions,
+#header .actions li {
+  background: transparent;
+  border: 0;
   box-shadow: none;
 }
-/* Rows inside lists that Default alternates or highlights */
-tr.odd, tr.even, tr:nth-child(odd), tr:nth-child(even), .odd, .even { background-color: #212631; }
-.flash.notice, .notice, .comment_notice { border-color: #667085; }
-.error, .caution, .comment_error, .flash.error { border-color: #667085; }
 
-/* Borders */
-hr, .group, fieldset, table, th, td, .blurb, .filters, .listbox, .comment,
-.dashboard, #header, #footer, #footer ul.navigation, .pagination li {
-  border-color: #4E576A;
+#header .primary a,
+#header .primary a:link,
+#header .primary a:visited,
+#header .primary .dropdown > a,
+#header .actions a,
+#header .actions a:link,
+#header .actions a:visited,
+#header .primary a:hover,
+#header .primary a:focus,
+#header .actions a:hover,
+#header .actions a:focus {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  text-decoration: none;
 }
 
-/* ---------- Header ---------- */
-#header { background: #0A0E15; border: 0; box-shadow: none; }
 /* Logo: off-white plate, AO3-red text */
-#header h1.heading, #header .heading { background: transparent; }
-#header h1.heading a, #header .heading > a, #header .logo, #header h1 a {
+#header h1.heading a,
+#header h1.heading a:link,
+#header h1.heading a:visited,
+#header h1.heading a:hover,
+#header h1.heading a:focus,
+#header h1.heading a span {
   background: #EEF0F4;
   color: #990000;
-  text-shadow: none;
-  box-shadow: none;
-  border: 0;
   text-decoration: none;
-}
-#header h1.heading a span, #header .logo span, #header h1 a span { color: #990000; background: transparent; }
-/* Nav: plain text, no underline, no bar, no boxes */
-#header .primary, #header ul.primary, #header .primary > li, #header ul.primary > li,
-#header .primary.navigation, #header .navigation.actions, #header .actions {
-  background: transparent;
-  border: 0;
   box-shadow: none;
 }
-#header .primary a, #header .primary > li > a, #header ul.primary > li > a,
-#header .navigation a, #header .actions a, #header .user a,
-#header .primary a:link, #header .primary a:visited {
-  background: transparent;
-  border: 0;
-  box-shadow: none;
-  text-decoration: none;
-  color: #E4E8F0;
-}
-#header .primary a:hover, #header .primary a:focus, #header .actions a:hover, #header .actions a:focus {
-  background: transparent;
-  color: #B8C4DC;
-  text-decoration: none;
-}
-#header .dropdown:hover > a, #header .dropdown:focus-within > a, #header li.dropdown a:hover { background: transparent; }
-#header .menu a, #header .dropdown .menu a { background: transparent; color: #E4E8F0; text-decoration: none; }
-#header .menu a:hover, #header .menu a:focus { background: #4E576A; color: #E4E8F0; }
-#header #search, #header .search, #header form.search, #header .search fieldset { background: transparent; border: 0; box-shadow: none; }
 
-/* ---------- Links (accent placeholders) ---------- */
-a, a:link, a:visited, .tag, a.tag { color: #B8C4DC; }
-a:hover, a:focus, a:active { color: #E4E8F0; background: transparent; }
-.actions a, a.action, .actions input, .action, button, input[type="submit"], input[type="button"],
-input[type="reset"], .actions button, a.button {
-  background-color: #373F4E;
-  color: #E4E8F0;
-  border: 1px solid #667085;
-  box-shadow: none;
-  background-image: none;
-  text-shadow: none;
+.dropdown .menu,
+ul.menu {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--text);
 }
-.actions a:hover, a.action:hover, button:hover, input[type="submit"]:hover, .actions input:hover,
-.actions a:focus, button:focus, input[type="submit"]:focus {
-  background-color: #4E576A;
-  color: #E4E8F0;
-  border-color: #667085;
-}
-.actions a:active, .actions a.current, a.action.current, button:active, input[type="submit"]:active {
-  background-color: #4E576A;
-  color: #E4E8F0;
-  box-shadow: none;
-}
-.current, .actions .current { color: #E4E8F0; }
-span.unread, .unread { background-color: #373F4E; }
 
-/* ---------- Forms: dark in every state, including focus ---------- */
-input, textarea, select, option, optgroup,
-input[type="text"], input[type="password"], input[type="email"], input[type="search"],
-input[type="url"], input[type="number"], input[type="date"], input[type="file"],
-.autocomplete input, .ui-autocomplete-input, .dynamic input, .listbox input {
-  background-color: #0A0E15;
-  color: #E4E8F0;
-  border: 1px solid #667085;
+.dropdown .menu a,
+ul.menu a {
+  color: var(--text);
+  background: var(--surface);
+}
+
+.dropdown .menu a:hover,
+ul.menu a:hover {
+  background: var(--raised);
+  color: var(--accent-hover);
+}
+
+#footer,
+#footer.region {
+  background: var(--surface);
+  color: var(--text-soft);
+  border-top: 1px solid var(--line);
+}
+
+#footer a {
+  color: var(--accent);
+}
+
+.blurb,
+li.blurb,
+.index .blurb {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--line);
   box-shadow: none;
+}
+
+.blurb .heading a,
+.blurb h4.heading a {
+  color: var(--accent);
+}
+
+.blurb .datetime,
+.blurb .stats dt,
+.blurb .stats dd,
+.blurb .series,
+.blurb .fandoms,
+.blurb .fandoms a {
+  color: var(--text-soft);
+}
+
+.blurb .userstuff,
+.blurb .summary {
+  color: var(--text);
+}
+
+.tags li a,
+.tags li a:link,
+.tags li a:visited {
+  color: var(--accent);
+}
+
+.tags li.warnings a,
+.tags li.warnings strong a {
+  font-weight: bold;
+}
+
+.tags li a:hover {
+  background: var(--raised);
+  color: var(--accent-hover);
+}
+
+.pagination li a,
+.pagination li span {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+.pagination .current {
+  background: var(--raised);
+  color: var(--accent-hover);
+}
+
+.pagination li a:hover {
+  background: var(--raised);
+}
+
+.work.meta.group,
+dl.work.meta.group,
+dl.meta {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+dl.meta dt,
+.work.meta dt {
+  color: var(--text-soft);
+}
+
+.preface .meta,
+.preface .byline,
+.preface .summary,
+.preface .notes,
+.notes.module,
+.summary.module {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--line);
+}
+
+.notes.module blockquote,
+.summary.module blockquote,
+.preface blockquote.userstuff {
+  color: var(--text);
+}
+
+#chapters .userstuff,
+#chapters.userstuff {
+  background: var(--ground);
+  color: var(--text);
+  line-height: 1.7;
+  max-width: 70ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#chapters .userstuff p {
+  margin-bottom: 1em;
+}
+
+#chapters .userstuff a:link,
+#chapters .userstuff a:visited {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+#chapters .userstuff a:hover {
+  color: var(--accent-hover);
+}
+
+#chapters .userstuff hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+#chapters .userstuff blockquote {
+  border-left: 1px solid var(--control);
+  padding-left: 1em;
+}
+
+.chapter .heading,
+.chapter h3.title {
+  color: var(--text);
+}
+
+/* Work title: the only font-weight exception */
+.work .preface .title,
+.preface h2.title,
+h2.title.heading {
+  font-weight: bold;
+}
+
+fieldset,
+.filters {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--text);
+}
+
+legend {
+  color: var(--text);
+}
+
+label,
+form dt {
+  color: var(--text);
+}
+
+input,
+textarea,
+select,
+.autocomplete {
+  background: var(--ground);
+  color: var(--text);
+  border: 1px solid var(--control);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--accent);
+  border-color: var(--accent);
+}
+
+/* Inputs stay dark with light text in every state (beats AO3's own focus rule) */
+#outer input[type="text"],
+#outer input[type="password"],
+#outer input[type="email"],
+#outer input[type="search"],
+#outer input[type="url"],
+#outer input[type="number"],
+#outer input[type="date"],
+#outer textarea,
+#outer select,
+#header input[type="text"],
+#header input[type="search"],
+#outer input[type="text"]:focus,
+#outer input[type="password"]:focus,
+#outer input[type="email"]:focus,
+#outer input[type="search"]:focus,
+#outer input[type="url"]:focus,
+#outer input[type="number"]:focus,
+#outer input[type="date"]:focus,
+#outer textarea:focus,
+#outer select:focus,
+#outer input:active,
+#outer textarea:active,
+#outer select:active,
+#header input[type="text"]:focus,
+#header input[type="search"]:focus {
+  background-color: var(--ground);
   background-image: none;
-}
-input:focus, textarea:focus, select:focus,
-input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus,
-input[type="search"]:focus, input[type="url"]:focus, input[type="number"]:focus,
-input:active, textarea:active, select:active,
-input:hover, textarea:hover, select:hover {
-  background-color: #0A0E15;
-  color: #E4E8F0;
-  border-color: #A3ACBD;
+  color: var(--text);
   box-shadow: none;
-  outline: 1px solid #667085;
 }
-input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill,
-input:-webkit-autofill:focus, input:-webkit-autofill:hover {
+
+/* Autocomplete inputs (skin wizard Font field, tag fields) and any focused input.
+   AO3's own focus / autocomplete rules turned these white; !important guarantees dark. */
+input:focus,
+textarea:focus,
+select:focus,
+input:active,
+textarea:active,
+input.autocomplete,
+input.autocomplete:focus,
+.autocomplete input,
+.autocomplete input:focus,
+input.ui-autocomplete-input,
+input.ui-autocomplete-input:focus,
+#outer .autocomplete input,
+#outer .autocomplete input:focus,
+#outer input.autocomplete,
+#outer input.autocomplete:focus,
+#outer input.ui-autocomplete-input,
+#outer input.ui-autocomplete-input:focus,
+form input:focus,
+form textarea:focus,
+form select:focus {
+  background-color: #0A0E15 !important;
+  background-image: none !important;
+  color: #E4E8F0 !important;
+  border-color: #A3ACBD !important;
+  box-shadow: none !important;
+}
+
+/* The !important block above also matches buttons and checkboxes. On desktop and on
+   iOS/Android a tapped button stays :focus, so it would have turned near-black. Restore them. */
+input[type="submit"]:focus,
+input[type="submit"]:active,
+input[type="button"]:focus,
+input[type="button"]:active,
+input[type="reset"]:focus,
+input[type="reset"]:active {
+  background-color: #373F4E !important;
+  background-image: none !important;
+  color: #E4E8F0 !important;
+  border-color: #667085 !important;
+}
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
+  background-color: transparent !important;
+  border-color: #667085 !important;
+}
+
+#outer input:-webkit-autofill,
+#outer input:-webkit-autofill:focus,
+#outer textarea:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px #0A0E15 inset;
   -webkit-text-fill-color: #E4E8F0;
 }
-input::placeholder, textarea::placeholder { color: #A3ACBD; }
-input[type="checkbox"], input[type="radio"] { background: #0A0E15; border-color: #667085; }
-input[disabled], textarea[disabled], select[disabled], input[readonly] {
-  background-color: #212631;
-  color: #A3ACBD;
-}
-/* Rich-text and HTML editors */
-.rtf-html-switch, .toolbar, ul.rtf-toolbar, .rtf-toolbar li, .html-notes, .mce-content-body {
-  background: #212631;
-  color: #E4E8F0;
-  border-color: #4E576A;
-}
-.ui-autocomplete li, .ui-menu-item, .ui-menu-item a, .autocomplete .dropdown li, ul.autocomplete li {
-  background: #212631;
-  color: #E4E8F0;
-}
-.ui-state-hover, .ui-state-focus, .ui-state-active, .ui-menu-item:hover, .ui-menu-item a:hover,
-li.ui-state-focus, .ui-menu .ui-state-focus, .autocomplete li.selected, ul.autocomplete li.selected {
-  background: #4E576A;
-  color: #E4E8F0;
-  border-color: #667085;
-}
-.ui-widget-header, .ui-dialog-titlebar { background: #373F4E; color: #E4E8F0; border-color: #4E576A; }
-.ui-widget-overlay { background: #0A0E15; opacity: 0.7; }
 
-/* ---------- Work page ---------- */
-.work .preface .title, .work h2.title, h2.title.heading, .preface .title.heading {
-  font-weight: bold;
-  color: #E4E8F0;
+option,
+optgroup {
+  background: var(--ground);
+  color: var(--text);
 }
-.userstuff, .userstuff p, .userstuff blockquote, .chapter .userstuff, #workskin, #workskin .userstuff {
-  background-color: transparent;
-  color: #E4E8F0;
-}
-.userstuff blockquote, blockquote { border-color: #4E576A; background: transparent; color: #E4E8F0; }
-.userstuff table, .userstuff td, .userstuff th { background: transparent; color: #E4E8F0; border-color: #4E576A; }
-.work.meta.group, .work.meta.group dd, .work.meta.group dt { background: #212631; color: #E4E8F0; }
-.tags .tag, ul.tags li, .tags li, .tags a { background: transparent; color: #B8C4DC; }
-ul.tags li.warnings strong a, ul.tags li.warnings a { color: #B8C4DC; }
-.required, abbr[title] { color: #A3ACBD; }
-.chapter .preface, .chapter .preface .title, #chapters .chapter { background: transparent; color: #E4E8F0; }
-.splash, .navigation.actions li a { color: #E4E8F0; }
-.series .position, .series.module, ul.series, .series li { background: transparent; color: #E4E8F0; }
-.bookmark.blurb .user, .bookmark.blurb .own { background: #212631; border-color: #4E576A; color: #E4E8F0; }
 
-/* ---------- Stats (kept exactly as written) ---------- */
+input[type="submit"],
+button,
+.action,
+a.action,
+.actions a,
+.actions input,
+.actions button {
+  background: var(--raised);
+  color: var(--text);
+  border: 1px solid var(--control);
+  box-shadow: none;
+}
+
+input[type="submit"]:hover,
+button:hover,
+.action:hover,
+.actions a:hover,
+.actions input:hover,
+.actions button:hover {
+  background: var(--line);
+  color: var(--accent-hover);
+}
+
+input[type="submit"]:disabled,
+button:disabled,
+input:disabled {
+  background: var(--surface);
+  color: var(--text-soft);
+  border-color: var(--line);
+}
+
+li.comment,
+.comment,
+.comment .userstuff {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--line);
+}
+
+.comment .heading,
+.comment .heading a,
+.comment .datetime {
+  color: var(--text-soft);
+}
+
+.comment .heading a.user,
+.comment h4.heading a {
+  color: var(--accent);
+}
+
+.flash,
+.notice,
+.error,
+.caution,
+.comment_error {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--control);
+}
+
+table,
+th,
+td,
+.dashboard,
+#dashboard,
+.dashboard.region {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--line);
+}
+
+#dashboard a,
+.dashboard a {
+  color: var(--accent);
+}
+
+.dashboard .current,
+#dashboard .current {
+  background: var(--raised);
+  color: var(--accent-hover);
+}
+
 .stats .hits, .stats .kudos, .stats .bookmarks, .stats .comments { display: none; }
 
-/* ---------- Comments ---------- */
-#comments_placeholder, .comments, #comments, .comment.group, li.comment, ol.thread, ol.thread li,
-.thread .comment, .comment .heading, .comment .icon, .comment .userstuff, .comment .actions {
-  background-color: #212631;
-  color: #E4E8F0;
-  border-color: #4E576A;
+::selection {
+  background: var(--control);
+  color: var(--accent-hover);
+}
+
+/* ---------- Added coverage ---------- */
+
+/* Page-level grounds and common containers AO3 leaves light */
+html,
+#inner,
+.region,
+.module,
+.listbox,
+.listbox .index,
+.index.group,
+.group,
+.splash,
+.news,
+.tagset,
+.ui-dialog,
+.ui-widget-content {
+  background-color: var(--surface);
+  color: var(--text);
+  border-color: var(--line);
   box-shadow: none;
 }
-ol.thread ol.thread, ol.thread ol.thread li { background-color: #373F4E; border-color: #4E576A; }
-.comment .userstuff, .comment blockquote { background: transparent; }
-.comment .actions a, .comment .actions button { background: #373F4E; color: #E4E8F0; border: 1px solid #667085; }
-.comment_form, #add_comment, #add_comment_placeholder, .comment form fieldset {
-  background: #212631;
-  color: #E4E8F0;
-  border-color: #4E576A;
+html,
+#inner {
+  background-color: var(--ground);
 }
-.comment.unreviewed, .unreviewed { background: #373F4E; }
-.comment .heading a { color: #B8C4DC; }
-
-/* ---------- Dashboard, user pages ---------- */
-.dashboard, #dashboard, .user.home, .user.profile, .bio, .bio.module, .meta.module, .user.module,
-.dashboard .navigation, .dashboard ul.navigation li, .dashboard .actions, .dashboard .icon,
-.dashboard .heading, .dashboard .meta, .dashboard p {
-  background-color: #212631;
-  color: #E4E8F0;
-  border-color: #4E576A;
-  box-shadow: none;
-}
-.dashboard .navigation a, .dashboard ul.navigation a, #dashboard a { color: #B8C4DC; background: transparent; }
-.dashboard .navigation .current, .dashboard li.current, .dashboard a.current { background: #373F4E; color: #E4E8F0; }
-.dashboard .icon img, .icon img, img.icon { background: #212631; border-color: #4E576A; }
-.user.home .module, .user.home .blurb, .user.home .listbox, .user.home .index { background: #212631; border-color: #4E576A; }
-.module.home .heading, .index.group .heading { background: transparent; color: #E4E8F0; }
-
-/* ---------- Works index, search and filters ---------- */
-ol.work.index.group, ol.index.group, ul.index.group, .index.group, .work.index.group,
-li.work, li.bookmark, li.series, li.tag, li.pseud, li.collection, li.user {
+dl.meta dd,
+.blurb .header,
+.blurb blockquote,
+.filters dl,
+.filters dd,
+.filters dt,
+.filters .heading,
+.listbox .heading {
   background: transparent;
-  color: #E4E8F0;
-  border-color: #4E576A;
+  color: var(--text);
 }
-.blurb h4.heading, .blurb h4.heading a, .blurb .heading a, .blurb .fandoms a { color: #B8C4DC; background: transparent; }
-.blurb .required-tags, .blurb ul.required-tags li, .blurb .required-tags a { border-color: #4E576A; background: #373F4E; }
-.blurb .tags, .blurb ul.tags, .blurb ul.tags li { background: transparent; }
-.blurb .summary, .blurb blockquote, .blurb blockquote.userstuff { background: transparent; color: #E4E8F0; }
-.blurb .datetime, .blurb .stats, .blurb dl.stats, .blurb dl.stats dt, .blurb dl.stats dd { color: #A3ACBD; background: transparent; }
-.pagination, ol.pagination, .pagination li, .pagination a, .pagination span {
+.footnote,
+.hint,
+.required,
+.byline {
+  color: var(--text-soft);
+}
+hr,
+fieldset,
+table,
+.pagination li a,
+.pagination li span {
+  border-color: var(--line);
+}
+
+/* Preferences and other settings forms */
+form.edit_preference,
+.preferences,
+.preferences fieldset,
+.preferences dl,
+.preferences dd,
+.preferences dt,
+.preferences legend,
+.settings fieldset {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--line);
+  box-shadow: none;
+}
+.preferences .actions,
+.preferences .submit {
   background: transparent;
-  color: #B8C4DC;
-  border-color: #4E576A;
-  box-shadow: none;
 }
-.pagination .current, .pagination li.current, .pagination .gap { background: #373F4E; color: #E4E8F0; }
-.pagination .disabled, .pagination .next.disabled, .pagination .prev.disabled { color: #667085; }
-#work-filters, .filters, .filters form, .filters dl, .filters dd, .filters dt, .filters fieldset, .filters .options,
-.filters .submit, .filters .actions, form.filters, #sort_and_filter, #work_search, #new_work_search, #new_work_search fieldset,
-#new_work_search dl, #new_work_search dd, #new_work_search dt, #new_work_search legend, .search.group {
-  background-color: #212631;
-  color: #E4E8F0;
-  border-color: #4E576A;
-  box-shadow: none;
+a.help,
+.symbol.question,
+.question {
+  background: var(--raised);
+  color: var(--text);
+  border-color: var(--control);
 }
-.filters .expander, .filters .collapsed, .filters dt a, .filters .heading, .filters legend { color: #E4E8F0; background: transparent; }
-.filters .tags li, .filters .tag, .filters .filters-list { background: transparent; color: #B8C4DC; }
-.autocomplete, .autocomplete .dropdown, .autocomplete ul, .autocomplete li { background: #212631; color: #E4E8F0; border-color: #4E576A; }
-.autocomplete .token, .token, .tagset .token { background: #373F4E; color: #E4E8F0; border-color: #667085; }
-.facet, .facets, .facets li, .facet a { background: transparent; color: #B8C4DC; }
+.tabs a,
+ul.tabs li a {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--line);
+}
+.tabs .current,
+.tabs li.current a {
+  background: var(--raised);
+  color: var(--accent-hover);
+}
 
-/* ---------- Preferences and settings forms ---------- */
-.preferences, form.edit_preference, #edit_preference, .preferences fieldset, .preferences dl,
-.preferences dd, .preferences dt, .preferences legend, form.edit_preference fieldset, form.edit_preference dl,
-fieldset.account, fieldset.privacy, fieldset.display, fieldset.collections, .settings, .settings fieldset {
-  background-color: #212631;
-  color: #E4E8F0;
-  border-color: #4E576A;
+/* Skin editor */
+.skin,
+form.skin,
+#new_skin,
+.edit_skin,
+.skin fieldset,
+.skin dl,
+.skin dd,
+.skin dt,
+.skin legend,
+.skin .group,
+.skin.wizard,
+.skin .wizard,
+.skin .wizard fieldset {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--line);
   box-shadow: none;
 }
-.preferences .actions, .preferences .submit, form.edit_preference .actions { background: transparent; }
-.preferences label, .preferences .hint, .preferences .question, form label { color: #E4E8F0; }
-.preferences .required { color: #A3ACBD; }
-.question, a.help, .help.symbol, .symbol.question { background: #373F4E; color: #E4E8F0; border-color: #667085; }
-.tabs, ul.tabs, .tabs li, .tabs a { background: transparent; color: #B8C4DC; border-color: #4E576A; }
-.tabs .current, .tabs li.current, .tabs .current a { background: #373F4E; color: #E4E8F0; }
-
-/* ---------- Skin editor (site skins, work skins, CSS textareas, wizard) ---------- */
-.skins, form.skin, #new_skin, .edit_skin, form#new_skin, form.edit_skin, .skin.module,
-.skins fieldset, .skin fieldset, .skin dl, .skin dd, .skin dt, .skin legend, .skin .preview,
-.skin .group, .skins .index, .skins li.skin, li.skin.blurb, .skin.blurb, .skin .actions {
-  background-color: #212631;
-  color: #E4E8F0;
-  border-color: #4E576A;
+#skin_css,
+textarea#skin_css,
+.skin textarea,
+.skin input[type="text"],
+.skin select {
+  background-color: var(--ground);
+  color: var(--text);
+  border: 1px solid var(--control);
   box-shadow: none;
 }
-.skin textarea, #skin_css, textarea#skin_css, textarea[id^="skin_"], .skin .css, textarea.css, .CodeMirror,
-.skin .wizard textarea, .skin input[type="text"], .skin select, #skin_title, #skin_description {
-  background-color: #0A0E15;
-  color: #E4E8F0;
-  border: 1px solid #667085;
+#skin_css:focus,
+textarea#skin_css:focus,
+.skin textarea:focus,
+.skin input:focus,
+.skin select:focus {
+  background-color: var(--ground);
+  color: var(--text);
+  border-color: var(--accent);
+  outline: 2px solid var(--accent);
+}
+pre,
+code,
+kbd,
+samp,
+.skin pre,
+.skin .preview {
+  background-color: var(--ground);
+  color: var(--text);
+  border-color: var(--line);
+}
+
+/* Search and filters */
+#work-filters,
+form.filters,
+#sort_and_filter,
+#new_work_search,
+#new_work_search fieldset,
+#new_work_search dl,
+#new_work_search dd,
+#new_work_search dt,
+#new_work_search legend,
+.search.group {
+  background-color: var(--surface);
+  color: var(--text);
+  border-color: var(--line);
   box-shadow: none;
 }
-.skin textarea:focus, #skin_css:focus, textarea#skin_css:focus, .skin input:focus, .skin select:focus {
-  background-color: #0A0E15;
-  color: #E4E8F0;
-  border-color: #A3ACBD;
-  outline: 1px solid #667085;
+.filters .expander,
+.filters dt a,
+.filters legend {
+  background: transparent;
+  color: var(--text);
 }
-.skin .wizard, .skin .wizard fieldset, .skin .wizard dl, .skin .wizard dt, .skin .wizard dd,
-.skin .wizard .group, .skin .wizard .expandable, .skin.wizard {
-  background: #212631;
-  color: #E4E8F0;
-  border-color: #4E576A;
+.autocomplete .dropdown,
+.autocomplete ul,
+.autocomplete li,
+.ui-autocomplete,
+.ui-menu,
+.ui-menu-item,
+.ui-menu-item a {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--line);
 }
-.skin .preview, .skin .preview *, .skin pre, .skin code, pre, code, kbd, samp {
-  background-color: #0A0E15;
-  color: #E4E8F0;
-  border-color: #4E576A;
+.ui-state-hover,
+.ui-state-focus,
+.ui-state-active,
+.ui-menu-item a:hover,
+.autocomplete li.selected {
+  background: var(--raised);
+  color: var(--accent-hover);
+  border-color: var(--control);
 }
-.skin .cache, .skin .parent, .skin .skin-parents, .skin ul.parent, .skin ul.parent li {
-  background: #212631;
-  color: #E4E8F0;
+.token,
+.tagset .token {
+  background: var(--raised);
+  color: var(--text);
+  border-color: var(--control);
 }
-.skin .actions input, .skin .actions a, .skin .actions button { background: #373F4E; color: #E4E8F0; border: 1px solid #667085; }
-.skin .notice, .skin .error, .skin .caution { background: #373F4E; color: #E4E8F0; border-color: #667085; }
-.skin .colorpicker, .skin input.color, .skin input[type="color"] { background: #0A0E15; border-color: #667085; }
+.ui-widget-header,
+.ui-dialog-titlebar {
+  background: var(--raised);
+  color: var(--text);
+  border-color: var(--line);
+}
 
-/* ---------- Footer and misc ---------- */
-#footer, #footer ul.navigation, #footer .navigation.actions, #footer .actions li { background: #0A0E15; color: #A3ACBD; border-color: #4E576A; }
-#footer a { color: #B8C4DC; background: transparent; }
-.splash .module, .splash .news, .news.module, .news .meta, .news.index .blurb, .admin.post, .post.group {
-  background: #212631;
-  color: #E4E8F0;
-  border-color: #4E576A;
+/* Comment form and threads */
+ol.thread,
+ol.thread li,
+#add_comment,
+#add_comment_placeholder,
+.comment form fieldset {
+  background-color: var(--surface);
+  color: var(--text);
+  border-color: var(--line);
 }
-.comment_error, .flash.comment_error, .caution.notice, .notice.flash, .error.flash {
-  background: #373F4E;
-  color: #E4E8F0;
-  border-color: #667085;
+ol.thread ol.thread li {
+  background-color: var(--raised);
 }
-::selection { background: #4E576A; color: #E4E8F0; }
+.comment .actions a,
+.comment .actions button {
+  background: var(--raised);
+  color: var(--text);
+  border: 1px solid var(--control);
+}
 
-/* ---------- Mobile ---------- */
-@media only screen and (max-width: 42em) {
-  html, body, #outer, #inner, #main, #header, #footer { background: #0A0E15; color: #E4E8F0; }
-  #header .primary, #header ul.primary, #header .primary > li, #header .navigation, #header .actions,
-  #header .menu, #header .dropdown .menu, #header .secondary, #header .dropdown, #header .user {
-    background: #0A0E15;
-    color: #E4E8F0;
+/* No stray dark bands inside the title block or the stats row:
+   everything nested in the work header takes the panel's surface color. */
+#main .preface .byline,
+#main .preface .heading,
+#main .preface h3.heading,
+#main .preface .summary,
+#main .preface .notes,
+#main .preface .module,
+#main .preface .module blockquote,
+#main .preface .module .userstuff,
+#main .preface blockquote.userstuff,
+#main .preface .userstuff,
+#main .preface .meta,
+#main .preface .title,
+#main .chapter .preface,
+#main .chapter .preface .heading,
+#main .chapter .preface .title,
+#main dl.meta dt,
+#main dl.meta dd,
+#main dd.stats,
+#main dl.stats,
+#main dl.stats dt,
+#main dl.stats dd,
+#main .work.meta .stats,
+#main .work.meta .stats dl {
+  background: transparent;
+  border-color: var(--line);
+  box-shadow: none;
+}
+
+/* ---------- Fixes from the live style scan ---------- */
+
+/* Native controls (checkboxes, radios, select popups, scrollbars) render dark.
+   If AO3's sanitizer rejects color-scheme, delete just this block. */
+:root,
+body {
+  color-scheme: dark;
+}
+
+/* Action buttons: AO3's .actions a:link (0,2,1) and its gradient beat plain .actions a.
+   Match the :link/:visited rank (later rule wins ties) and reset the gradient. */
+.actions a:link,
+.actions a:visited,
+a.action:link,
+a.action:visited,
+.action:link,
+.action:visited,
+.announcement .action,
+#footer button,
+#footer .action,
+#modal .action:link,
+#modal .action:visited,
+a#expand-fandoms,
+a#collapse-fandoms {
+  background-color: var(--raised);
+  background-image: none;
+  color: var(--text);
+  border-color: var(--control);
+  box-shadow: none;
+  text-shadow: none;
+}
+
+/* Hover, focus, active and visited:hover: no dark text on dark buttons */
+.actions a:hover,
+.actions a:focus,
+.actions a:active,
+.actions a:link:hover,
+.actions a:visited:hover,
+.action:hover,
+.action:focus,
+.action:active,
+a.action:hover,
+a.action:active,
+.action:visited:hover,
+a:visited:hover,
+a:active {
+  background-color: var(--line);
+  background-image: none;
+  color: var(--accent-hover);
+}
+a:visited:hover,
+a:active {
+  background-color: transparent;
+}
+.actions label {
+  color: var(--text);
+}
+
+/* Admin banner: dark surface instead of bright yellow, readable links and button */
+#admin-banner,
+#admin-banner .userstuff,
+#admin-banner .alert,
+.announcement,
+.alert {
+  background-color: var(--surface);
+  color: var(--text);
+  border-color: var(--line);
+}
+#admin-banner a:link,
+#admin-banner a:visited,
+#admin-banner strong a {
+  color: var(--accent);
+  background: transparent;
+}
+#admin-banner a:hover,
+#admin-banner a:focus {
+  color: var(--accent-hover);
+}
+#admin-banner button,
+#admin-banner button.action,
+#admin-banner button.showme,
+#admin-banner .action {
+  background-color: var(--raised);
+  background-image: none;
+  color: var(--text);
+  border: 1px solid var(--control);
+}
+#admin-banner button span {
+  background: transparent;
+  color: var(--text);
+  border: 0;
+}
+
+/* Bookmark counts */
+.bookmark .count a:link,
+.bookmark .count a:visited {
+  color: var(--accent);
+}
+.bookmark .count a:hover,
+.bookmark .count a:focus {
+  color: var(--accent-hover);
+}
+
+/* Header search box: AO3's #header #search input:focus sets dark text */
+#header #search input:focus,
+#header #search input.text:focus,
+#header #search .text:focus {
+  background-color: var(--ground);
+  color: var(--text);
+  border-color: var(--accent);
+}
+#header fieldset,
+#header #search fieldset {
+  background: transparent;
+  border: 0;
+}
+
+/* Menus: skin A's menu link colors and AO3's #footer rules */
+#header .primary .menu a,
+#header .primary .dropdown .menu a {
+  color: var(--text);
+}
+/* Dropdown items: the highlight on hover/focus (only the menu panel has a surface) */
+#header .dropdown .menu a:hover,
+#header .dropdown .menu a:focus,
+#header ul.menu a:hover,
+#header ul.menu a:focus {
+  background: var(--raised);
+  color: var(--accent-hover);
+}
+#footer .heading {
+  color: var(--text);
+}
+#footer ul,
+#footer ul.menu {
+  border-color: var(--line);
+}
+#footer a,
+#footer ul a {
+  background: transparent;
+}
+
+/* "Own" items on the dashboard keep the surface color */
+.own,
+.dashboard .own,
+#dashboard.own {
+  background-color: var(--surface);
+}
+
+/* Tablet: AO3 collapses the header around this width, so keep the nav plain and dark here too */
+@media only screen and (max-width: 62em) {
+  #header .primary,
+  #header .primary > li,
+  #header .navigation,
+  #header .actions {
+    background: transparent;
     border: 0;
     box-shadow: none;
   }
-  #header .primary a, #header .primary > li > a, #header .menu a, #header .dropdown .menu a, #header .navigation a {
+  #header .primary a,
+  #header .navigation a,
+  #header .actions a,
+  #header .dropdown > a {
     background: transparent;
-    color: #E4E8F0;
-    text-decoration: none;
     border: 0;
+    color: var(--text);
+    text-decoration: none;
   }
-  #header .dropdown .menu, #header ul.menu { background: #373F4E; }
-  #header h1.heading a, #header .heading > a, #header .logo { background: #EEF0F4; color: #990000; }
-  .dashboard, .filters, .blurb, .comment, fieldset, .listbox, .group, dl.meta {
-    background-color: #212631;
-    color: #E4E8F0;
-    border-color: #4E576A;
+  #header .dropdown .menu,
+  #header ul.menu {
+    background: var(--surface);
+    border: 1px solid var(--line);
   }
-  .filters form, .filters dl, .filters dd, .filters dt { background: #212631; color: #E4E8F0; }
-  input, textarea, select, input:focus, textarea:focus, select:focus {
-    background-color: #0A0E15;
-    color: #E4E8F0;
-    border-color: #667085;
+  #header .dropdown .menu a,
+  #header ul.menu a {
+    background: transparent;
   }
-  .actions a, button, input[type="submit"] { background: #373F4E; color: #E4E8F0; border-color: #667085; }
+}
+
+/* Mobile */
+@media only screen and (max-width: 42em) {
+  html,
+  body,
+  #outer,
+  #inner,
+  #main,
+  #header {
+    background: var(--ground);
+    color: var(--text);
+  }
+  #header .primary,
+  #header .primary > li,
+  #header .navigation,
+  #header .actions,
+  #header .dropdown {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+  #header .primary a,
+  #header .navigation a,
+  #header .actions a,
+  #header .dropdown > a {
+    background: transparent;
+    border: 0;
+    color: var(--text);
+    text-decoration: none;
+  }
+  #header .dropdown .menu,
+  #header ul.menu {
+    background: var(--surface);
+    border: 1px solid var(--line);
+  }
+  #header .dropdown .menu a,
+  #header ul.menu a {
+    background: transparent;
+  }
+  #header h1.heading a {
+    background: #EEF0F4;
+    color: #990000;
+  }
+  .filters,
+  .filters form,
+  .filters dl,
+  .blurb,
+  .comment,
+  fieldset {
+    background-color: var(--surface);
+    color: var(--text);
+    border-color: var(--line);
+  }
+  #outer input[type="text"],
+  #outer input[type="search"],
+  #outer textarea,
+  #outer select,
+  #outer input[type="text"]:focus,
+  #outer input[type="search"]:focus,
+  #outer textarea:focus,
+  #outer select:focus {
+    background-color: var(--ground);
+    color: var(--text);
+  }
 }
